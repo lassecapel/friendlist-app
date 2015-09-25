@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, renderDevTools } from '../store_enhancers/devTools';
 
 import { addFriend } from '../actions/FriendsActions';
+import { setCoordinates } from '../actions/MapActions';
 
 import FriendListApp from './FriendListApp';
 import * as reducers from '../reducers';
@@ -13,8 +14,9 @@ import * as reducers from '../reducers';
 
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
-console.log(store);
+console.log(reducer, store)
 store.dispatch(addFriend("Lucky Luke"));
+store.dispatch(setCoordinates([52.065414, 5.0885655]));
 
 class App extends Component {
   render() {
