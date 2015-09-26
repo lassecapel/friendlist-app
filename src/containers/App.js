@@ -11,10 +11,8 @@ import FriendListApp from './FriendListApp';
 import * as reducers from '../reducers';
 
 
-
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
-console.log(reducer, store)
 store.dispatch(addFriend("Lucky Luke"));
 store.dispatch(setCoordinates([52.065414, 5.0885655]));
 

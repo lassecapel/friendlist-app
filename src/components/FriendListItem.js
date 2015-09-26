@@ -16,7 +16,6 @@ export default class FriendListItem extends Component {
       <li className={styles.friendListItem}>
         <div className={styles.friendInfos}>
           <div><span>{this.props.name}</span></div>
-          <div><small>xx friends in common</small></div>
         </div>
         <div className={styles.friendActions}>
           <button className={`btn btn-default ${styles.btnAction}`} onClick={() => this.props.starFriend(this.props.id)}>

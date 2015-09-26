@@ -6,3 +6,10 @@ export function setCoordinates(center) {
     center
   };
 }
+
+export function setZoom(zoom) {
+  return {
+    type: types.SET_ZOOM,
+    zoom
+  };
+}

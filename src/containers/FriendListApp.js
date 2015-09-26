@@ -5,20 +5,22 @@ import styles from './FriendListApp.css';
 
 import * as FriendsActions from '../actions/FriendsActions';
 import * as MapActions from '../actions/MapActions';
-import { FriendList, AddFriendInput, Map } from '../components';
+import { FriendList, AddFriendInput, Map, SearchLocationInput} from '../components';
 
 class FriendListApp extends Component {
   static propTypes = {
-    map: PropTypes.object.isRequired,
+    mapConfig: PropTypes.object.isRequired,
     friendlist: PropTypes.object.isRequired,
+    locationlist: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired
   }
 
   render() {
     const {
       friendlist: { friendsById },
+      locationlist,
+      mapConfig,
       dispatch,
-      map
     } = this.props;
 
     const friendActions = bindActionCreators(FriendsActions, dispatch);
@@ -32,7 +34,8 @@ class FriendListApp extends Component {
           <FriendList friends={friendsById} actions={friendActions} />
         </div>
         <div className={styles.friendListMap}>
-          <Map center={map.center} zoom={map.zoom}/>
+          <SearchLocationInput searchLocation={() => console.log("search")} />
+          <Map center={mapConfig.center} zoom={mapConfig.zoom}/>
         </div>
       </div>
     );
@@ -42,7 +45,8 @@ class FriendListApp extends Component {
 function select(state) {
   return {
     friendlist: state.friendlist,
-    map: state.map
+    mapConfig: state.mapConfig,
+    locationlist: state.locationlist
   }
 }
 
